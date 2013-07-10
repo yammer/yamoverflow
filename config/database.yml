@@ -7,7 +7,6 @@ development:
   adapter: postgresql
   database: yamoverflow
   host: localhost
-  username: postgres
   port: 5432
   encoding: utf8
 
