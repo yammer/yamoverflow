@@ -32,7 +32,7 @@ gem 'jbuilder', '~> 1.2'
 gem 'yam', :require => 'yammer'
 
 gem 'omniauth'
-gem 'omniauth-yammer', :git => 'https://github.com/nickcampbell18/omniauth-yammer-dev.git'
+gem 'omniauth-yammer'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
