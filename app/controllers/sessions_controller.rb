@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  skip_before_filter :require_session
+  
   def create
     auth = request.env['omniauth.auth']
     auth_token = auth[:credentials][:token]
