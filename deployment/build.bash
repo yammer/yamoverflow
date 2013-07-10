@@ -9,10 +9,10 @@ RVM="/usr/local/rvm/bin/rvm"
 ENVIRONMENT="/usr/local/rvm/environments/ruby-$RUBY_VERSION"
 
 echo "Setting up environment via puppet..."
-puppet apply deployment/environment.pp
-
+puppet apply deployment/init.pp --modulepath=deployment/modules --verbose
+exit 1
 echo "Setting up ruby version"
-$RVM install $RUBY_VERSION  
+( $RVM list rubies|grep $RUBY_VERSION ) || $RVM install $RUBY_VERSION  
 source $ENVIRONMENT
 gem install bundler
 
@@ -23,3 +23,8 @@ echo "Copying to $DEPLOY_TARGET"
 mkdir -p  $DEPLOY_TARGET
 rsync -a . $DEPLOY_TARGET/
 chown -R $OWNER $DEPLOY_TARGET
+ln -s $ENVIRONMENT $DEPLOY_TARGET/environment
+
+echo "Switching version..."
+rm -f $DEPLOY_ROOT/current
+ln -s $DEPLOY_TARGET $DEPLOY_ROOT/current
