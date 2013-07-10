@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   skip_before_filter :require_session
-  
+
   def create
     auth = request.env['omniauth.auth']
     auth_token = auth[:credentials][:token]
@@ -15,7 +15,9 @@ class SessionsController < ApplicationController
                           profile_url: info[:urls][:yammer])
     end
     session[:user_id] = user.id
-    redirect_to root_url, :notice => "Signed in!"
+    flash[:notice] = "Signed In!"
+
+    redirect_to_stored_location(root_url)
   end
 
   def destroy
