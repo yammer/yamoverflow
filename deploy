@@ -2,6 +2,6 @@
 APPID="yamoverflow"
 SERVER="zure1.cloudapp.net"
 TARGET="~/$APPID"
-rsync -a --delete . "zure1.cloudapp.net:$TARGET/"
+rsync -a --delete --exclude ".bundle" --exclude "vendor" . "zure1.cloudapp.net:$TARGET/"
 ssh -t "$SERVER" "cd $TARGET/ && sudo ./deployment/build.bash"
 

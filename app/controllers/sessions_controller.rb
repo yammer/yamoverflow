@@ -1,6 +1,24 @@
 class SessionsController < ApplicationController
   def create
     auth = request.env['omniauth.auth']
-    render :text => "Authenticated! #{auth[:credentials][:token]}"
+    auth_token = auth[:credentials][:token]
+    info = auth[:info]
+
+    user = User.find_by_auth_token(auth_token)
+    unless user
+      user = User.create!(auth_token: auth_token,
+                          name: info[:name],
+                          permalink: info[:nickname],
+                          mugshot_url: info[:image],
+                          profile_url: info[:urls][:yammer])
+    end
+    session[:user_id] = user.id
+    redirect_to root_url, :notice => "Signed in!"
   end
+
+  def destroy
+    session[:user_id] = nil
+    redirect_to root_url, :notice => "Logged out!"
+  end
+
 end
