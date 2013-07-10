@@ -10,7 +10,6 @@ ENVIRONMENT="/usr/local/rvm/environments/ruby-$RUBY_VERSION"
 
 echo "Setting up environment via puppet..."
 puppet apply deployment/init.pp --modulepath=deployment/modules --verbose
-exit 1
 echo "Setting up ruby version"
 ( $RVM list rubies|grep $RUBY_VERSION ) || $RVM install $RUBY_VERSION  
 source $ENVIRONMENT
