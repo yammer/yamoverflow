@@ -2,7 +2,7 @@
 # Production Environment setup for YamOverflow
 #
 
-package{"ruby-rvm":
+package{["nginx-full"]:
   ensure => present,
 }
 
@@ -23,4 +23,20 @@ file{"/opt/yamoverflow":
   group => yamoverflow,
   mode => 0640,
   require => [Group[yamoverflow],User[yamoverflow]],
+}
+
+#rvm setup
+package{"ruby-rvm":
+  ensure => purged,
+}
+
+file{["/usr/share/ruby-rvm","/etc/rvmrc","/etc/profile.d/rvm.sh"]:
+  ensure => absent,
+  recurse => true,
+}
+
+exec {"install-rvm":
+  path => ["/usr/bin","/usr/sbin","/sbin","/bin"],
+  command => "curl -L https://get.rvm.io | bash -s stable",
+  creates => "/usr/local/rvm",
 }
