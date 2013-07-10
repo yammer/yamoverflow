@@ -45,6 +45,25 @@ class yamoverflow::production {
     mode => 0644,
   }
 
+  file{"/etc/nginx/sites-available/yamoverflow":
+    ensure => present,
+    owner => root,
+    group => root,
+    mode => 0600,
+    source => "puppet:///modules/yamoverflow/nginx.conf",
+    notify => Service[nginx],
+  }
+
+  file{"/etc/nginx/sites-enabled/yamoverflow":
+    ensure => link,
+    target => "/etc/nginx/sites-available/yamoverflow",
+    notify => Service[nginx],
+  }
+
+  service{"nginx":
+    ensure => running,
+  }
+
   #rvm setup
   package{"ruby-rvm":
     ensure => purged,

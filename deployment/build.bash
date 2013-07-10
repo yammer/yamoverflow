@@ -27,3 +27,6 @@ ln -s $ENVIRONMENT $DEPLOY_TARGET/environment
 echo "Switching version..."
 rm -f $DEPLOY_ROOT/current
 ln -s $DEPLOY_TARGET $DEPLOY_ROOT/current
+
+echo "Restarting yamoverflow..."
+restart yamoverflow
