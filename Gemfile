@@ -29,6 +29,11 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
+gem 'yam', :require => 'yammer'
+
+gem 'omniauth'
+gem 'omniauth-yammer', :git => 'https://github.com/nickcampbell18/omniauth-yammer-dev.git'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
