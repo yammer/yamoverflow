@@ -2,7 +2,7 @@
 # Production Environment setup for YamOverflow
 #
 
-package{["nginx-full"]:
+package{["nginx-full","postgresql","build-essential","libpq-dev"]:
   ensure => present,
 }
 
