@@ -87,6 +87,8 @@ class QuestionsController < ApplicationController
   		m[:author] = user[:name]
   		m[:mugshot] = user[:mugshot]
   		m[:created_at] = message[:created_at]
+  		m[:id] = message[:id]
+  		m[:replied_to] = message[:replied_to_id]
   		@messages << m
   	end
   end

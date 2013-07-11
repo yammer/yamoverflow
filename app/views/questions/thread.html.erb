@@ -1,10 +1,31 @@
-<h1>Thread view</h1>
+<%
+def print_recursive(message, first_level = false)
+	#return if (@messages.select {|m| m[:replied_to] == message[:id]}).empty?
 
-<% @messages.each do |message| %>
-
-<div>
+	%>
+	<div <%= "class=indented" if !first_level%>>
 	<p><img src="<%=message[:mugshot]%>"/><%=message[:author]%></p>
 	<p><%=message[:body]%></p>
 	<p><%=message[:created_at]%></p>
-</div>
-<% end %>
+
+	<%
+
+		(@messages.select {|m| m[:replied_to] == message[:id]}).each do |msg|
+			print_recursive(msg)
+		end
+	%>
+	</div>
+
+
+<%	
+end
+%>
+<h1>Thread view</h1>
+
+<% 
+top_messages = @messages.select {|msg| msg[:replied_to].blank?}
+
+top_messages.each do |message|
+	print_recursive(message, true)
+end
+%>
