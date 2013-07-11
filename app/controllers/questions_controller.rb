@@ -1,5 +1,5 @@
 class QuestionsController < ApplicationController
-	before_action :set_question, only: [:show, :edit, :update, :destroy]
+	before_action :set_question, only: [:show, :edit, :update, :destroy, :thread]
 
 	before_action :check_if_thread_already_exists, :only => :new
 
@@ -73,6 +73,24 @@ class QuestionsController < ApplicationController
     end
   end
 
+  def thread
+  	thread = (HashWithIndifferentAccess.new(JSON.parse(@question.representation)))
+  	references = thread[:references]
+  	messages = thread[:messages]
+  	messages.sort_by! {|m| m[:id]}
+
+  	@messages = Array.new
+  	messages.each do |message|
+  		m = {}
+  		m[:body] = message[:body][:plain]
+  		user = find_user(references, message[:sender_id])
+  		m[:author] = user[:name]
+  		m[:mugshot] = user[:mugshot]
+  		m[:created_at] = message[:created_at]
+  		@messages << m
+  	end
+  end
+
 
 
 	private
@@ -101,5 +119,10 @@ class QuestionsController < ApplicationController
     	unless (question = Question.find_by_thread_id(params[:thread_id])).blank?
     		redirect_to edit_question_url(question)
     	end
+    end
+
+    def find_user(references,user_id)
+    	user = references.find {|ref| ref[:type] == "user" && ref[:id] == user_id}
+    	{:name => user[:full_name], :mugshot => user[:mugshot_url]}
     end
 end

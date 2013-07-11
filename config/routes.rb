@@ -2,7 +2,11 @@ Yamoverflow::Application.routes.draw do
 
   get "add/:thread_id", :to => 'questions#new'
 
-  resources :questions
+  resources :questions do
+  	member do
+  		get :thread
+  	end
+  end
 
 
   get "sessions/create"
