@@ -1,6 +1,8 @@
 class QuestionsController < ApplicationController
 	before_action :set_question, only: [:show, :edit, :update, :destroy]
 
+	before_action :check_if_thread_already_exists, :only => :new
+
 	def index
 		if params[:topic].blank?
     	@questions = Question.all
@@ -39,7 +41,19 @@ class QuestionsController < ApplicationController
     end
 	end
 
+	def edit
+		answer = yammer_client.find_tagged_answer(@question[:thread_id])
+		@question.answer = answer[:body]
+		@question.answer_id = answer[:id]
+	end
+
 	def update
+		@question.user_id = current_user.id
+		answer = yammer_client.find_tagged_answer(params[:question][:thread_id])
+		@question.answer = answer[:body]
+		@question.answer_id = answer[:id]
+		@question.representation = yammer_client.full_thread(params[:question][:thread_id]).to_json
+
     respond_to do |format|
       if @question.update(question_params)
         format.html { redirect_to @question, notice: 'Question was successfully updated.' }
@@ -81,5 +95,11 @@ class QuestionsController < ApplicationController
 
     def question_params
       params.require(:question).permit(:title,:thread_id)
+    end
+
+    def check_if_thread_already_exists
+    	unless (question = Question.find_by_thread_id(params[:thread_id])).blank?
+    		redirect_to edit_question_url(question)
+    	end
     end
 end
