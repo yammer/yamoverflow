@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/bin/bash -ex
 RELEASE=`date +%d%m%y%H%M`
 APPID="yamoverflow"
 DEPLOY_ROOT="/opt/$APPID"
@@ -30,7 +30,7 @@ chown -R $OWNER $DEPLOY_TARGET
 chmod a+rwX $DEPLOY_TARGET/log
 
 echo "Running migrations..."
-rake db:migrate RAILS_ENV="production" 
+`cd $DEPLOY_TARGET && rake db:migrate RAILS_ENV=production` 
 
 echo "Switching version..."
 rm -f $DEPLOY_ROOT/current
