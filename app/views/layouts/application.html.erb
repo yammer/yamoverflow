@@ -7,11 +7,20 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="navbar-inner">
+    <h1><%= link_to "YamOverflow", "/" %></h1>
+  </div>
+</header>
+
   <% flash.each do |name, msg| %>
     <%= content_tag :div, msg, :id => "flash#{name}" %>
   <% end %>
 
-<%= yield %>
-
+  <div class="container">
+    <div class="row">
+      <%= yield %>
+    </div>
+  </div>
 </body>
 </html>
