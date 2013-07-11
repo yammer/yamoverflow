@@ -1,14 +1,16 @@
-<p id="notice"><%= notice %></p>
+<% if notice %>
+  <div class="alert alert-info">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <%= notice %>
+  </div>
+<% end %>
 
-<p>
-  <strong>Title:</strong>
-  <%= @question.title %>
-</p>
+<div class="question">
+  <h1><%= @question.title %></h1>
+  <div class="well well-small">
+    <%= @question.answer %>
+  </p>
+</div>
 
-<p>
-  <strong>Answer:</strong>
-  <%= @question.answer %>
-</p>
-
-<%= link_to 'Edit', edit_question_path(@question) %> |
-<%= link_to 'Back', questions_path %>
+<%= link_to 'Edit', edit_question_path(@question), class: "btn btn-warning" %>
+<%= link_to 'Back to Questions', questions_path, class: "btn btn-inverse" %>
