@@ -21,7 +21,7 @@ class yamoverflow::production {
     ensure => directory,
     owner => yamoverflow,
     group => yamoverflow,
-    mode => 0640,
+    mode => 0644,
     require => [Group[yamoverflow],User[yamoverflow]],
   }
 
