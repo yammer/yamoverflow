@@ -56,6 +56,7 @@ class yamoverflow::production {
     command => "/usr/local/bin/update_questions.sh",
     user => yamoverflow,
     hour => "*/2",
+    minute => 0,
     environment => "PATH=/sbin:/bin:/usr/sbin:/usr/bin",
   }
 
