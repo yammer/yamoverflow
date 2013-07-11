@@ -10,7 +10,7 @@ class QuestionsController < ApplicationController
     	topic = Topic.find(params[:topic])
     	@questions = topic.questions
     end
-    @topics = Topic.all
+    @topics = Topic.all.order("name ASC")
   end
 
 	def new
