@@ -13,7 +13,7 @@
  */
 
 .container {
-  margin-top: 4em;
+  margin: 6em 4em 0 4em !important;
 }
 
 header {
@@ -40,4 +40,10 @@ header h1 a {
 header h1 a:hover {
   color: inherit;
   text-decoration: inherit;
+}
+
+header .avatar {
+  width: 22px;
+  height: 22px;
+  margin-right: 15px;
 }
