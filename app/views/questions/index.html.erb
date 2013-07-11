@@ -20,7 +20,7 @@
 </div>
 <div class="span8" id="content">
   <% if @questions.length == 0 %>
-    No questions so far. Try to install our <a href="javascript:(function() {script=document.createElement('scr'+'ipt');script.type='text/javascript';script.src='://yamoverflow.com/bookmarklet.js?t='+(new Date()-0);document.getElementsByTagName('head')[0].appendChild(script);})();" onclick="alert('Drag this to your Bookmarks Bar to install')">Add to Yamoverflow</a> bookmarklet to your browser and add one yourself.
+    No questions so far. Try to install our <a href="javascript:(function() {script=document.createElement('scr'+'ipt');script.type='text/javascript';script.src=document.location.protocol+'//yamoverflow.com/bookmarklet.js?t='+(new Date()-0);document.getElementsByTagName('head')[0].appendChild(script);})();" onclick="alert('Drag this to your Bookmarks Bar to install')">Add to Yamoverflow</a> bookmarklet to your browser and add one yourself.
   <% else %>
     <% @questions.each do |question| %>
     <div class="question">

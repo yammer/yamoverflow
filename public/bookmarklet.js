@@ -1,7 +1,7 @@
 (function(){
   try {
     var YAM_CONVERSATION_KEY = 'threadId'
-      , YAM_OVERFLOW_URL = 'http://yamoverflow.dev/add/'
+      , YAM_OVERFLOW_URL = 'http://yamoverflow.com/add/'
       , YAM_OVERFLOW_TAG = 'YAMOVERFLOW'
       , TAG_NAMES_CLASS = 'yj-tag-name'
       , ERROR_IMAGE_URL = 'http://cdn1.iconfinder.com/data/icons/'
