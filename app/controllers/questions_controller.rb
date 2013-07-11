@@ -66,7 +66,7 @@ class QuestionsController < ApplicationController
 			topics = yammer_client.topics(thread_id)
 			result = Array.new
 			topics.each do |t|
-				topic = Topic.find_by_id(t[:id])
+				topic = Topic.find_by_workfeed_topic_id(t[:id])
 				if topic.nil?
 					topic = Topic.create! :workfeed_topic_id => t[:id], :name => t[:name]
 				end
