@@ -1,28 +1,35 @@
-<div id="topics">
-	<ul>
-		<li>
-			<%=
-			link_to "All (#{Question.all.count})", questions_path 
-			%>
-		</li>
-		<% @topics.each do |topic| %>
-		<li>
-			<%=
-			link_to "#{topic.name} (#{topic.questions.count})", questions_path(:topic => topic.id) 
-			%>
-		</li>
-		<% end %>
-	</ul>
+<div class="span3" id="sidebar">
+  <ul class="nav nav-tabs nav-stacked affix span3" id="topics">
+    <li>
+      <%=
+      link_to questions_path do
+      %>
+        All <span class="badge badge-info"><%= Question.all.count %></span><i class='icon-chevron-right'></i>
+      <% end %>
+    </li>
+    <% @topics.each do |topic| %>
+    <li>
+      <%=
+      link_to questions_path(:topic => topic.id) do
+      %>
+        <%= topic.name %> <span class="badge badge-info"><%= topic.questions.count %></span><i class='icon-chevron-right'></i>
+      <% end %>
+    </li>
+    <% end %>
+  </ul>
 </div>
-
-<div id="questions">
-	<ul>
-		<% @questions.each do |question| %>
-		<li>
-			<%=
-				link_to question.title, question
-			%>
-		</li>
-	<% end %>
-	</ul>
+<div class="span8" id="content">
+  <% if @questions.length == 0 %>
+    No questions so far. Try to install our <a href="javascript:(function() {script=document.createElement('scr'+'ipt');script.type='text/javascript';script.src='://yamoverflow.com/bookmarklet.js?t='+(new Date()-0);document.getElementsByTagName('head')[0].appendChild(script);})();" onclick="alert('Drag this to your Bookmarks Bar to install')">Add to Yamoverflow</a> bookmarklet to your browser and add one yourself.
+  <% else %>
+    <ul id="questions">
+      <% @questions.each do |question| %>
+      <li>
+        <%=
+          link_to question.title, question
+        %>
+      </li>
+      <% end %>
+    </ul>
+  <% end %>
 </div>

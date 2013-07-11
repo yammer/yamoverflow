@@ -1,0 +1,10 @@
+<h1>Thread view</h1>
+
+<% @messages.each do |message| %>
+
+<div>
+	<p><img src="<%=message[:mugshot]%>"/><%=message[:author]%></p>
+	<p><%=message[:body]%></p>
+	<p><%=message[:created_at]%></p>
+</div>
+<% end %>
