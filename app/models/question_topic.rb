@@ -1,0 +1,3 @@
+class QuestionTopic
+
+end

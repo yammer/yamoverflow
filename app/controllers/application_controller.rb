@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
   end
 
   def yammer_client
-  	@yamemr_client ||= Yammer::Client.new(:access_token  => current_user.auth_token)
+  	@yammer_client ||= Yammer::Client.new(:access_token  => current_user.auth_token)
   end
 
   def logged_in?

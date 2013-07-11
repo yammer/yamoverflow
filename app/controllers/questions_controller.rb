@@ -2,7 +2,13 @@ class QuestionsController < ApplicationController
 	before_action :set_question, only: [:show, :edit, :update, :destroy]
 
 	def index
-    @questions = Question.all
+		if params[:topic].blank?
+    	@questions = Question.all
+    else
+    	topic = Topic.find(params[:topic])
+    	@questions = topic.questions
+    end
+    @topics = Topic.all
   end
 
 	def new
@@ -16,6 +22,8 @@ class QuestionsController < ApplicationController
 		@question = Question.new(question_params)
 		@question.answer = find_tagged_answer(params[:question][:thread_id])
 		@question.representation = yammer_full_thread(params[:question][:thread_id]).to_json
+
+		@question.topics = find_topics(params[:question][:thread_id])
 
 		respond_to do |format|
       if @question.save
@@ -78,12 +86,25 @@ class QuestionsController < ApplicationController
 			thread = yammer_client.get_thread(thread_id)
 			thread = thread.body
 			thread[:references].each do |reference|
-				if reference[:type] == "topic"
+				if reference[:type] == "topic" && reference[:name] != "Yamoverflow"
 					topics << reference
 				end
 			end
 
 			topics
+		end
+
+		def find_topics(thread_id)
+			topics = topics(thread_id)
+			result = Array.new
+			topics.each do |t|
+				topic = Topic.find_by_id(t[:id])
+				if topic.nil?
+					topic = Topic.create! :workfeed_topic_id => t[:id], :name => t[:name]
+				end
+				result << topic
+			end
+			result
 		end
 
     def set_question

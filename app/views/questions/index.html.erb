@@ -1,0 +1,28 @@
+<div id="topics">
+	<ul>
+		<li>
+			<%=
+			link_to "All (#{Question.all.count})", questions_path 
+			%>
+		</li>
+		<% @topics.each do |topic| %>
+		<li>
+			<%=
+			link_to "#{topic.name} (#{topic.questions.count})", questions_path(:topic => topic.id) 
+			%>
+		</li>
+		<% end %>
+	</ul>
+</div>
+
+<div id="questions">
+	<ul>
+		<% @questions.each do |question| %>
+		<li>
+			<%=
+				link_to question.title, question
+			%>
+		</li>
+	<% end %>
+	</ul>
+</div>

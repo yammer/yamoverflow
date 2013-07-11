@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  workfeed_topic_id: 1
+  name: MyText
+  questions_count: 1
+
+two:
+  workfeed_topic_id: 1
+  name: MyText
+  questions_count: 1
