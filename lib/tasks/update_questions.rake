@@ -7,19 +7,25 @@ task :update_questions  => :environment do
 	i = 0
   Question.all.each do |question|
   	i += 1
-  	puts "Updating ##{question.id} - #{i}/#{n_questions}..."
-  	client = YammerClient.new(User.find(question.user_id).auth_token)
-  	answer = client.find_tagged_answer(question.thread_id)
+  	begin
+	  	puts "Updating ##{question.id} - #{i}/#{n_questions}..."
+	  	client = YammerClient.new(User.find(question.user_id).auth_token)
+	  	answer = client.find_tagged_answer(question.thread_id)
 
-  	if question.answer_id != answer[:id]
-  		question.answer_id = answer[:id]
-  		question.answer = answer[:body]
-  	end	
+	  	if question.answer_id != answer[:id]
+	  		question.answer_id = answer[:id]
+	  		question.answer = answer[:body]
+	  	end	
 
-  	question.representation = client.full_thread(question.thread_id).to_json
-  	question.save
-  	puts "Done"
-  	sleep 5
+	  	question.representation = client.full_thread(question.thread_id).to_json
+	  	question.save
+	  	puts "Done"
+	  	puts "Going to sleep for 5 seconds..."
+	  	sleep 5
+	  rescue Exception => ex
+	  	Rails.logger.error "There was an error in updating question ##{question.id}"
+	  	Rails.logger.error "#{ex.backtrace}"
+	  end
   end
   puts "DONE"
 end
