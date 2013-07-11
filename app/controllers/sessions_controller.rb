@@ -7,7 +7,13 @@ class SessionsController < ApplicationController
     info = auth[:info]
 
     user = User.find_by_auth_token(auth_token)
+
     unless user
+      if auth[:extra][:raw_info][:network_id] != 107
+        flash[:error] = "Sorry but access is limited to users of the Microsoft Network"
+        redirect_to root_url
+      end
+      
       user = User.create!(auth_token: auth_token,
                           name: info[:name],
                           permalink: info[:nickname],
