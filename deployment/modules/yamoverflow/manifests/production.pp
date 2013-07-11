@@ -13,7 +13,7 @@ class yamoverflow::production {
   user{ yamoverflow:
     ensure => present,
     gid => yamoverflow,
-    shell => "/bin/false",
+    shell => "/bin/bash",
     require => Group[yamoverflow],
   }
 
@@ -25,7 +25,7 @@ class yamoverflow::production {
     require => [Group[yamoverflow],User[yamoverflow]],
   }
 
-  file{"/var/run/yamoverflow":
+  file{["/var/run/yamoverflow","/var/lock/yamoverflow"]:
     ensure => directory,
     owner => yamoverflow,
     group => yamoverflow,
@@ -41,6 +41,23 @@ class yamoverflow::production {
     ensure => directory,
     owner => yamoverflow,
     group => yamoverflow,
+  }
+
+  file{"/usr/local/bin/update_questions.sh":
+    ensure => present,
+    owner => root,
+    group => root,
+    mode => 755,
+    source => "puppet:///modules/yamoverflow/update_questions.sh",
+  }
+
+  cron{"update-questions":
+    ensure => present,
+    command => "/usr/local/bin/update_questions.sh",
+    user => yamoverflow,
+    hour => "*/2",
+    minute => 0,
+    environment => "PATH=/sbin:/bin:/usr/sbin:/usr/bin",
   }
 
   file{"/etc/init/yamoverflow.conf":
