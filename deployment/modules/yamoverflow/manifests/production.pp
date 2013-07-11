@@ -37,6 +37,12 @@ class yamoverflow::production {
     group => yamoverflow,
   }
 
+  file{"/etc/yamoverflow":
+    ensure => directory,
+    owner => yamoverflow,
+    group => yamoverflow,
+  }
+
   file{"/etc/init/yamoverflow.conf":
     ensure => present,
     source => "puppet:///modules/yamoverflow/yamoverflow.conf",
