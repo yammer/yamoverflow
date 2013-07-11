@@ -29,3 +29,27 @@
 .question h1 {
   font-size: 140%;
 }
+
+#content .question {
+  font-size: 130%;
+  padding-bottom: 2em;
+}
+
+#content .question + .question {
+  border-top: 1px solid silver;
+  padding-top: 2em;
+}
+
+#content .question .box {
+  padding: 6px;
+  background-color: rgb(245, 245, 245);
+  border: 1px dashed rgb(200, 200, 200);
+}
+
+#content .question .box:hover {
+  background-color: rgb(240, 240, 240);
+}
+
+#content .question .box a {
+  display: block;
+}
