@@ -18,6 +18,10 @@ source $ENVIRONMENT
 echo "Packaging release $RELEASE..."
 bundle package --all
 
+echo "Building assets..."
+RAILS_ENV=production bundle exec rake assets:precompile
+
+
 echo "Copying to $DEPLOY_TARGET..."
 mkdir -p  $DEPLOY_TARGET
 rsync -a . $DEPLOY_TARGET/
