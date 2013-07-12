@@ -55,3 +55,15 @@ header .avatar {
 .indented {
   margin-left: 40px;
 }
+
+.logo {
+  color: black;
+  font-weight: lighter;
+
+}
+
+.logo .strong{
+  font-weight: bolder;
+
+}
+
