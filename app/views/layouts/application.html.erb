@@ -27,6 +27,12 @@
       <li><a href="/auth/yammer">Sign in with Yammer</a></li>
       <% end %>
     </ul>
+
+    <% if logged_in? %>
+    <form class="navbar-search pull-right">
+      <input name="query" type="text" class="search-query" placeholder="Search">
+    </form>
+    <% end %>
   </div>
 </header>
 
