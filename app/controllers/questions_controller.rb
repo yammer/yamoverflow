@@ -52,10 +52,6 @@ class QuestionsController < ApplicationController
 
 	def update
 		@question.user_id = current_user.id
-		answer = yammer_client.find_tagged_answer(params[:question][:thread_id])
-		@question.answer = answer[:body]
-		@question.answer_id = answer[:id]
-		@question.representation = yammer_client.full_thread(params[:question][:thread_id]).to_json
 
     respond_to do |format|
       if @question.update(question_params)
