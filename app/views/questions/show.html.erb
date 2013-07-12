@@ -5,12 +5,19 @@
   </div>
 <% end %>
 
-<div class="question">
+<div id="question">
   <h1><%= @question.title %></h1>
   <div class="well well-small">
     <%= @question.answer %>
   </p>
 </div>
+
+<div id="thread_container">
+  <a href="<%= "#{questions_path}/#{@question.id}" %>/thread/" id="thread_button">See the original conversation thread</a>
+  <img src="/assets/loading.gif" class="loading">
+</div>
+
+<script>var QUESTION_ID = <%= @question.id %></script>
 
 <%= link_to '← Back to Questions', questions_path, class: "btn btn-success" %>
 <%= link_to 'Edit', edit_question_path(@question), class: "btn btn-warning" %>

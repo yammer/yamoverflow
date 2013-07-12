@@ -13,7 +13,7 @@
  */
 
 .container {
-  margin: 6em 4em 0 4em !important;
+  margin: 6em 4em 4em 4em !important;
 }
 
 header {
@@ -52,10 +52,6 @@ header .avatar {
   margin-right: 10px;
 }
 
-.indented {
-  margin-left: 40px;
-}
-
 .logo {
   color: black;
   font-weight: lighter;
@@ -66,4 +62,3 @@ header .avatar {
   font-weight: bolder;
 
 }
-
