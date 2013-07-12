@@ -34,7 +34,7 @@
           <input name="query" type="text" class="search-query" placeholder="Search">
         </form>
         <% end %>
-    </div>
+      </div>
     </header>
 
     <% flash.each do |name, msg| %>
@@ -47,13 +47,15 @@
       </div>
     </div>
   </div>
-  <footer>
-    <div class="container">
-      <p class="muted credit">
-        <%= image_tag "microsoft.png" %>
-        © 2012 Microsoft Corporation. All rights reserved. Any resemblance to other popular websites is pure coincidental.
-      </p>
-    </div>
-  </footer>
+  <% if logged_in? %>
+    <footer>
+      <div class="container">
+        <p class="muted credit">
+          <%= image_tag "microsoft.png" %>
+          © 2012 Microsoft Corporation. All rights reserved. Any resemblance to other popular websites is pure coincidental.
+        </p>
+      </div>
+    </footer>
+  <%end%>
 </body>
 </html>
