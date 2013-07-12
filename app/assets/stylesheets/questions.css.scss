@@ -124,6 +124,11 @@
   display:none;
   color: #aeaeae;
   font-weight: normal;
+  font-size: 10pt;
+}
+
+#question .title .icon-pencil {
+  margin-right: 3px;
 }
 
 #question .title:hover a.edit {

@@ -15,7 +15,7 @@
     <div class="text">
       <%= @question.title %>
       <%= link_to edit_question_path(@question), :class => "edit" do %>
-      <i class="icon-pencil"></i> Edit title
+      <i class="icon-pencil"></i>Edit title
       <% end %>
     </div>
   </div>
@@ -49,5 +49,5 @@
 <% end %>
 
 <div id="thread_container">
-  <img src="/assets/loading.gif" class="loading">
+  <%=image_tag "loading.gif", :class => 'loading'%>
 </div>
