@@ -4,11 +4,13 @@ class QuestionsController < ApplicationController
 	before_action :check_if_thread_already_exists, :only => :new
 
 	def index
-		if params[:topic].blank?
+		if params[:topic].blank? && params[:query].blank?
     	@questions = Question.all
-    else
+    elsif params[:query].blank?
     	topic = Topic.find(params[:topic])
     	@questions = topic.questions
+    else
+    	@questions = Question.query(params[:query])
     end
     @topics = Topic.all.order("name ASC")
   end
