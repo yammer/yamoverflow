@@ -20,6 +20,7 @@ body {
   height: auto !important;
   height: 100%;
   margin: 0 auto -60px;
+  padding-bottom: 60px;
 }
 .container-fluid {
   margin: 6em 4em 4em 4em !important;
