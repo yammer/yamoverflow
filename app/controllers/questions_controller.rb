@@ -91,6 +91,8 @@ class QuestionsController < ApplicationController
   		m[:replied_to] = message[:replied_to_id]
   		@messages << m
   	end
+
+  	render :layout => false
   end
 
 
