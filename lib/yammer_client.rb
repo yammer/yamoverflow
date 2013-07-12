@@ -24,7 +24,9 @@ class YammerClient
 			end
 
 			messages.sort_by! {|msg| msg[:id]}
-			{:id => messages.last[:id], :body => messages.last[:body][:plain]}
+			answer = messages.last
+			answer[:body][:plain].gsub! "#yamoverflow",""
+			{:id => answer[:id], :body => answer[:body][:plain]}
 		end
 
 		def topics(thread_id)
