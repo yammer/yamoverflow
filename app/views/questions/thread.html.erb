@@ -21,7 +21,6 @@ def print_recursive(message, first_level = false)
 end
 %>
 
-<h2>Original conversation thread</h2>
 <% 
 top_messages = @messages.select {|msg| msg[:replied_to].blank?}
 

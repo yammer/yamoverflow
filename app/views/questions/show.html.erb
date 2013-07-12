@@ -6,18 +6,45 @@
 <% end %>
 
 <div id="question">
-  <h1><%= @question.title %></h1>
-  <div class="well well-small">
-    <%= @question.answer %>
-  </p>
-</div>
+  <div class="title">
+    <div class="mugshot">
+      <div>
+      Q
+      </div>
+    </div>
+    <div class="text">
+      <%= @question.title %>
+      <%= link_to edit_question_path(@question), :class => "edit" do %>
+      <i class="icon-pencil"></i> Edit title
+      <% end %>
+    </div>
+  </div>
 
-<div id="thread_container">
-  <a href="<%= "#{questions_path}/#{@question.id}" %>/thread/" id="thread_button">See the original conversation thread</a>
-  <img src="/assets/loading.gif" class="loading">
+  <div class="answer">
+    <div class="mugshot">
+      <div>
+      A
+      </div>
+    </div>
+    <div class="text well well-small">
+      <%= @question.answer %>
+    </div>
+  </div>
 </div>
 
 <script>var QUESTION_ID = <%= @question.id %></script>
 
-<%= link_to '← Back to Questions', questions_path, class: "btn btn-success" %>
-<%= link_to 'Edit', edit_question_path(@question), class: "btn btn-warning" %>
+<%= link_to '← Back to list', questions_path, class: "btn btn-success" %>
+<%= link_to 'Refresh', refresh_question_path(@question), class: "btn btn-primary" %>
+<%= link_to thread_question_path(@question), :id => "thread_button", :class => "btn btn-info" do %>
+<span class="is-closed">
+  <i class="icon-eye-open icon-white"></i> Show original thread 
+</span>
+<span class="is-open">
+  <i class="icon-eye-close icon-white"></i> Hide original thread 
+</span>
+<img src="/assets/loading.gif" class="loading">
+<% end %>
+
+<div id="thread_container">
+</div>
