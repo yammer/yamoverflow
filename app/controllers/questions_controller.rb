@@ -12,6 +12,7 @@ class QuestionsController < ApplicationController
     else
     	@questions = Question.query(params[:query])
     end
+    @questions = @questions.page(params[:page])
     @topics = Topic.all.order("name ASC")
   end
 
