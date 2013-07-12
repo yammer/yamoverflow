@@ -14,3 +14,15 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+$(document).on('click', '#thread_button', function(e) {
+  var $threadContainer = null;
+  e.preventDefault();
+  $threadContainer = $(this).parent();
+  $(this).hide();
+  $threadContainer.find('.loading').show();
+
+  $.get(QUESTION_ID + '/thread', function(data) {
+    $threadContainer.html(data);
+  })
+});

@@ -30,6 +30,39 @@
   font-size: 140%;
 }
 
+#thread_container {
+  margin: 0 0 1em 0;
+}
+
+.loading {
+  display: none;
+}
+
+#thread_container h2 {
+  font-size: 120%;
+  margin: 0;
+  padding: 0;
+  line-height: 1em;
+}
+
+.message .mugshot {
+  margin-right: 10px;
+}
+
+.message .header {
+  margin: 20px 0 5px 0;
+  font-weight: bold;
+}
+
+.message .time {
+  font-size: 70%;
+  color: silver;
+}
+
+.indented {
+  margin-left: 40px;
+}
+
 .question {
   font-size: 130%;
   padding-bottom: 1em;

@@ -13,7 +13,7 @@
  */
 
 .container {
-  margin: 6em 4em 0 4em !important;
+  margin: 6em 4em 4em 4em !important;
 }
 
 header {
@@ -50,8 +50,4 @@ header .avatar {
 
 #rightside_nav {
   margin-right: 10px;
-}
-
-.indented {
-  margin-left: 40px;
 }
