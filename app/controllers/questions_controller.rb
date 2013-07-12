@@ -1,5 +1,5 @@
 class QuestionsController < ApplicationController
-	before_action :set_question, only: [:show, :edit, :update, :destroy, :thread]
+	before_action :set_question, only: [:show, :edit, :update, :destroy, :thread, :refresh]
 
 	before_action :check_if_thread_already_exists, :only => :new
 
@@ -59,6 +59,23 @@ class QuestionsController < ApplicationController
     respond_to do |format|
       if @question.update(question_params)
         format.html { redirect_to @question, notice: 'Question was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: 'edit' }
+        format.json { render json: @question.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def refresh
+    answer = yammer_client.find_tagged_answer(@question.thread_id)
+    @question.answer = answer[:body]
+    @question.answer_id = answer[:id]
+    @question.representation = yammer_client.full_thread(@question.thread_id).to_json
+
+    respond_to do |format|
+      if @question.save
+        format.html { redirect_to @question, notice: 'Question was successfully refreshed.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

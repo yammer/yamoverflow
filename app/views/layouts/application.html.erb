@@ -9,7 +9,7 @@
 <body>
   <header class="navbar navbar-fixed-top">
     <div class="navbar-inner">
-      <h1><img src="/assets/logo.png" width="45" height="45"><span class="logo"><a href="/">yam<span class="strong">overflow</span></a></span></h1>
+      <h1><%=image_tag "logo.png",:width => 45, :height => 45%><span class="logo"><a href="/">yam<span class="strong">overflow</span></a></span></h1>
 
       <ul class="nav pull-right" id="rightside_nav">
         <% if logged_in? %>

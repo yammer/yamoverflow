@@ -5,6 +5,7 @@ Yamoverflow::Application.routes.draw do
   resources :questions do
   	member do
   		get :thread
+      get :refresh
   	end
   end
 

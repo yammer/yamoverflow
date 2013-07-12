@@ -18,11 +18,21 @@
 $(document).on('click', '#thread_button', function(e) {
   var $threadContainer = null;
   e.preventDefault();
-  $threadContainer = $(this).parent();
-  $(this).hide();
-  $threadContainer.find('.loading').show();
+  $threadContainer = $("#thread_container");
 
-  $.get(QUESTION_ID + '/thread', function(data) {
-    $threadContainer.html(data);
-  })
+  var $this = $(this);
+
+  if ($this.is(".open")) {
+  	$threadContainer.html('');
+  	$this.removeClass("open");
+  } else {
+
+	  $this.addClass("open");
+	  $this.find('.loading').show();
+
+	  $.get(QUESTION_ID + '/thread', function(data) {
+	    $threadContainer.html(data);
+	    $this.find('.loading').hide();
+	  });
+	}
 });
