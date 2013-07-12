@@ -4,7 +4,7 @@
       <%=
       link_to questions_path do
       %>
-        All <span class="badge badge-info"><%= Question.all.count %></span><i class='icon-chevron-right'></i>
+        All <span class="badge badge-info"><%= Question.all.count %></span>
       <% end %>
     </li>
     <% @topics.each do |topic| %>
@@ -12,7 +12,7 @@
       <%=
       link_to questions_path(:topic => topic.id) do
       %>
-        <%= topic.name %> <span class="badge badge-info"><%= topic.questions.count %></span><i class='icon-chevron-right'></i>
+        <%= topic.name %> <span class="badge badge-info"><%= topic.questions.count %></span>
       <% end %>
     </li>
     <% end %>
