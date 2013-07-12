@@ -17,7 +17,7 @@ class QuestionsController < ApplicationController
 		thread_starter = yammer_client.thread_starter(params[:thread_id])
 		answer = yammer_client.find_tagged_answer(params[:thread_id])
 
-		@question = Question.new :title => thread_starter, :answer => answer, :thread_id => params[:thread_id]
+		@question = Question.new :title => thread_starter, :answer => answer[:body], :answer_id => answer[:id], :thread_id => params[:thread_id]
 	end
 
 	def create
