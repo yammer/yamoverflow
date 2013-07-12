@@ -25,7 +25,8 @@ class YammerClient
 
 		messages.sort_by! {|msg| msg[:id]}
 		answer = messages.last
-		answer[:body][:plain].gsub! "#yamoverflow",""
+		raise "You need at least one reply tagged with #yamoverflow" if answer.blank?
+		answer[:body][:plain].gsub!("#yamoverflow","")
 		{:id => answer[:id], :body => answer[:body][:plain]}
 	end
 
