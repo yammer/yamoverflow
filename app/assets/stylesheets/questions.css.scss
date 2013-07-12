@@ -142,11 +142,20 @@
   display: block;
   margin-left: 84px;
   font-weight: bold;
+  font-size: 120%;
 }
 
 #question .answer .text {
   display: block;
   margin-left: 84px;
+}
+
+#question .answer .text pre {
+  border: none !important;
+  font-family: inherit !important;
+  font-size: 100%;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
 #thread_button .is-open, #thread_button.open .is-closed  {
