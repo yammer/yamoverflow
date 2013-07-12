@@ -51,3 +51,14 @@ header .avatar {
 #rightside_nav {
   margin-right: 10px;
 }
+
+.logo {
+  color: black;
+  font-weight: lighter;
+
+}
+
+.logo .strong{
+  font-weight: bolder;
+
+}
