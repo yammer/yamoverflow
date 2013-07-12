@@ -2,6 +2,18 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+#sidebar {
+  max-width: 300px;
+}
+
+#topics {
+  max-width: 280px;
+}
+
+#topics {
+  width: 28%;
+}
+
 #topics .icon-chevron-right {
   float: right;
   margin-top: 2px;
@@ -59,22 +71,22 @@
 
 .question {
   font-size: 130%;
-  padding-bottom: 1em;
+  padding-bottom: 2em;
 }
 
 .question .box {
   padding: 6px;
-  background-color: rgb(245, 245, 245);
   border: 1px dashed rgb(200, 200, 200);
   overflow: scroll;
 }
 
 .question .box:hover {
-  background-color: rgb(240, 240, 240);
 }
 
 .question .box a {
+  color: black;
   display: block;
+  font-weight: bold;
 }
 
 #content .search-label .badge {

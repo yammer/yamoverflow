@@ -12,17 +12,18 @@
  *= require_tree .
  */
 
-.container {
+.container-fluid {
   margin: 6em 4em 4em 4em !important;
 }
 
 header {
-  box-shadow: 0 5px 5px gray;
+  box-shadow: 0 4px 5px rgb(250, 250, 250);
 }
 
 header .navbar-inner {
   height: 3em;
   line-height: 100%;
+  padding: 5px 0 5px 0;
   vertical-align: middle;
 }
 
@@ -55,7 +56,7 @@ header .avatar {
 .logo {
   color: black;
   font-weight: lighter;
-
+  margin-left: 10px;
 }
 
 .logo .strong{
