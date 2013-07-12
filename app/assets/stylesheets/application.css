@@ -76,6 +76,7 @@ header .avatar {
 footer {
   background-color: #F5F5F5;
   height: 60px;
+  position: fixed; left: 0; right: 0; bottom: 0;
 }
 
 footer .credit {
