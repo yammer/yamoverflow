@@ -28,8 +28,11 @@
     <h4 class="search-label">Searching for <i><%=params[:query]%></i>...<span class="badge badge-info"><%= @questions.count %></span></h4>
     <% end %>
     <% @questions.each do |question| %>
-    <div class="question">
-      <div class="box">
+    <div class="question media">
+      <div class="pull-left">
+        <img class="media-object" src="<%= question.user[:mugshot_url] %>" width="48" height="48">
+      </div>
+      <div class="box media-body">
         <%=
           link_to question.title, question
         %>

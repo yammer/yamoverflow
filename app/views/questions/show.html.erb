@@ -43,11 +43,11 @@
 <span class="is-open">
   <i class="icon-eye-close icon-white"></i> Hide original thread 
 </span>
-<img src="/assets/loading.gif" class="loading">
 <% end %>
 <%= link_to "https://www.yammer.com/microsoft.com/messages/#{@question.thread_id}", class: "btn btn-info", :style=> "margin-left: 4px", :target=> "_blank" do %>
 <i class="icon-folder-open icon-white"></i> Open in Yammer
 <% end %>
 
 <div id="thread_container">
+  <img src="/assets/loading.gif" class="loading">
 </div>

@@ -28,7 +28,7 @@ $(document).on('click', '#thread_button', function(e) {
   } else {
 
 	  $this.addClass("open");
-	  $this.find('.loading').show();
+	  $threadContainer.find('.loading').show();
 
 	  $.get(QUESTION_ID + '/thread', function(data) {
 	    $threadContainer.html(data);
