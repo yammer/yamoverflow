@@ -20,11 +20,11 @@
 </div>
 <div class="span8" id="content">
   <% if @questions.length == 0 %>
-    No questions so far. Try to install our <a href="javascript:(function() {script=document.createElement('scr'+'ipt');script.type='text/javascript';script.src=document.location.protocol+'//yamoverflow.com/bookmarklet.js?t='+(new Date()-0);document.getElementsByTagName('head')[0].appendChild(script);})();" onclick="alert('Drag this to your Bookmarks Bar to install');return false;">Add to YamOverflow</a> bookmarklet to your browser and add one yourself.
+    No questions so far. Try to install our <a title="Drag the link to your Bookmarks Bar to install the bookmarklet" href="javascript:(function() {script=document.createElement('scr'+'ipt');script.type='text/javascript';script.src=document.location.protocol+'//yamoverflow.com/bookmarklet.js?t='+(new Date()-0);document.getElementsByTagName('head')[0].appendChild(script);})();" onclick="alert('Drag the link to your Bookmarks Bar to install');return false;">Add to YamOverflow</a> bookmarklet to your browser and add one yourself.
   <% else %>
     <div id="bookmarklet_link" class="alert alert-info">
       <button type="button" class="close" data-dismiss="alert">&times;</button>
-      Want to see more questions? Install our <a href="javascript:(function() {script=document.createElement('scr'+'ipt');script.type='text/javascript';script.src=document.location.protocol+'//yamoverflow.com/bookmarklet.js?t='+(new Date()-0);document.getElementsByTagName('head')[0].appendChild(script);})();" onclick="alert('Drag this to your Bookmarks Bar to install');return false;">Add to YamOverflow</a> bookmarklet to your browser and add one yourself.
+      Want to see more questions? Install our <a title="Drag the link to your Bookmarks Bar to install the bookmarklet" href="javascript:(function() {script=document.createElement('scr'+'ipt');script.type='text/javascript';script.src=document.location.protocol+'//yamoverflow.com/bookmarklet.js?t='+(new Date()-0);document.getElementsByTagName('head')[0].appendChild(script);})();" onclick="alert('Drag the link to your Bookmarks Bar to install');return false;">Add to YamOverflow</a> bookmarklet to your browser and add one yourself.
     </div>
     <% @questions.each do |question| %>
     <div class="question">
