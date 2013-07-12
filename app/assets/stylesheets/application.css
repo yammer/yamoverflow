@@ -15,15 +15,8 @@ body {
   height: 100%;
 }
 
-#wrap {
-  min-height: 100%;
-  height: auto !important;
-  height: 100%;
-  margin: 0 auto -60px;
-  padding-bottom: 60px;
-}
 .container-fluid {
-  margin: 6em 4em 8em 4em !important;
+  margin: 6em 4em 6em 4em !important;
 }
 
 header {
