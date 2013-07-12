@@ -11,16 +11,7 @@
  *= require_self
  *= require_tree .
  */
-body {
-  height: 100%;
-}
 
-#wrap {
-  min-height: 100%;
-  height: auto !important;
-  height: 100%;
-  margin: 0 auto -60px;
-}
 .container-fluid {
   margin: 6em 4em 4em 4em !important;
 }
@@ -71,17 +62,4 @@ header .avatar {
 .logo .strong{
   font-weight: bolder;
 
-}
-
-footer {
-  background-color: #F5F5F5;
-  height: 60px;
-}
-
-footer .credit {
-  line-height: 60px;
-}
-
-footer img {
-  margin-right: 20px;
 }
