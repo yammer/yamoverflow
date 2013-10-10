@@ -23,16 +23,15 @@ $(document).on('click', '#thread_button', function(e) {
   var $this = $(this);
 
   if ($this.is(".open")) {
-  	$threadContainer.html('');
-  	$this.removeClass("open");
+    $threadContainer.html('');
+    $this.removeClass("open");
   } else {
+    $this.addClass("open");
+    $threadContainer.find('.loading').show();
 
-	  $this.addClass("open");
-	  $threadContainer.find('.loading').show();
-
-	  $.get(QUESTION_ID + '/thread', function(data) {
-	    $threadContainer.html(data);
-	    $this.find('.loading').hide();
-	  });
-	}
+    $.get(QUESTION_ID + '/thread', function(data) {
+      $threadContainer.html(data);
+      $this.find('.loading').hide();
+    });
+  }
 });
