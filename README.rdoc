@@ -1,28 +1,3 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Have you found a thread with very valuable information or documentation you want to keep at hand? Reply in the thread with a summary, tag with #yamoverflow your answer and click on the yamoverflow bookmarklet. Add a question title for easier lookup, and done! You question/answer available forever on Yam Overflow.
