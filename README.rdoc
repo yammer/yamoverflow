@@ -1,3 +1,22 @@
 == README
 
 Have you found a thread with very valuable information or documentation you want to keep at hand? Reply in the thread with a summary, tag with #yamoverflow your answer and click on the yamoverflow bookmarklet. Add a question title for easier lookup, and done! You question/answer available forever on Yam Overflow.
+
+=== Configuration
+Before using Yam Overflow, you need to perform some preliminary configuration step:
+
+1) Go to https://www.yammer.com/client_applications and click on "Register a new App".
+
+2) Create a new app and make it available in your network. Provide a redirect URI to the place where you will deploy your app.
+
+3) Take note of the CLIENT_SECRET and CLIENT_ID
+
+4) Before starting Yam Overflow, plese set the following environment variables:
+- YAMMER_KEY to the value of CLIENT_ID
+- YAMMER_SECRET to the value of CLIENT_SECRET
+5) Open config/initializers/omniauth.rb and modify OmniAuth.config.full_host = "https://yamoverflow.com" to point to your host.
+
+6) Set the environment variable YAMMER_NETWORK to your Yammer network's id.
+
+=== Disclaimer
+This application accesses your Yammer network and let you export threads. We suggest to deploy it only internally inside your company or organization and to avoid public access.
