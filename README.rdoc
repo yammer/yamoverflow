@@ -18,5 +18,7 @@ Before using Yam Overflow, you need to perform some preliminary configuration st
 
 6) Set the environment variable YAMMER_NETWORK to your Yammer network's id.
 
+7) In public/bookmarklet.js set YAM_OVERFLOW_URL to point to a URL of your version of Yam Overflow which is being used to add a new thread, and YAM_OVERFLOW_TAG to represent the tag name you want to be used to mark threads in Yammer which were exported to Yam Overflow.
+
 === Disclaimer
 This application accesses your Yammer network and let you export threads. We suggest to deploy it only internally inside your company or organization and to avoid public access.
